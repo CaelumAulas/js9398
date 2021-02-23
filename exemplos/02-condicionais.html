@@ -1,0 +1,46 @@
+<meta charset="utf-8">
+<h1>JavaScript: if, switch, operator ternário e operador binário</h1>
+
+<script>
+
+    let idade = 16;
+
+    if (idade < 18) {
+        document.write("Você é menor de idade!");
+    }
+    else {
+        document.write("Você é maior de idade!");
+    }
+
+    // Operador Ternário
+    let sexo = 'M';
+    let mensagem = (sexo == 'M') ? "Você é um HOMEM!" : "Você é uma MULHER!";
+    document.write('<br>' + mensagem);
+
+    // Operador Binário
+    let pais = prompt("Informe o nome do seu país:").trim() || "Brasil";
+    document.write('<br>Seu país é: ' + pais);
+
+    // switch...case
+    let estado = 'BA';
+
+    switch(estado)
+    {
+        case 'SP':
+        case 'RJ':
+        case 'MG': 
+        case 'ES':
+            document.write('<br>Sua região é a Sudeste!');
+        break;
+
+        case 'RS':
+            document.write('<br>Sua região é a Sul!');
+        break;
+
+        default:
+            document.write('<br>Região não definida!');
+        break;
+    }
+
+
+</script>

@@ -1,0 +1,81 @@
+<meta charset="utf-8">
+<h1>JavaScript Básico</h1>
+
+<script>
+
+    /*
+        'use strict' ativa:
+        1) Proíbe a declaração de variáveis sem um comando declaratório explícito;
+        2) Proíbe o comando with();
+        3) Proíbe parâmetros duplicados em funções;
+        4) Muda o comportamento da palavra-chave "this";
+    */
+    'use strict';
+
+    var a = 555;
+    console.log('Valor de a:', a);
+
+    if (true) {
+        var b = a;
+    }
+
+    console.log('O valor de b:', b);
+
+    function teste() {
+        var c = 888;
+        console.log('Valor da variável c:', c); // Ok
+    }
+
+    teste();
+    // console.log('Valor de c:', c); // ReferenceError
+
+    // ES6: let para declarar variáveis
+    let c = 777; // global
+    if (true) {
+        let d = c;
+        console.log('Valor de d:', d); // Ok
+    }
+
+    // console.log('O valor de d:', d); // ReferenceError
+
+    // ES6: constantes com a palavra-chave const
+    const x = 555;
+    // x = 999; // TypeError
+
+    const lista = ['Cachorro', 'Rato', 'Macaco'];
+    console.log(lista);
+    lista.push('Papagaio'); // adiciona um valor ao final do array
+    lista.shift(); // remove o primeiro elemento
+    console.log(lista);
+    // lista = []; // TypeError
+
+    // Objeto Literal ou Genérico
+    const pessoa = {
+        // propriedades do objeto
+        nome: 'Henrique',
+        idade: 19,
+        cpf: '000.000.111-11',
+
+        // método (ES5)
+        dizerOla: function() {
+            console.log(`Olá, meu nome é: ${this.nome}`);
+        },
+
+        // método (ES6)
+        dizerTchau() {
+            console.log('Tchaaaauuuu!!!');
+        }
+    }
+
+    pessoa.nome = "Bruno";
+    pessoa.cidade = "Barueri";
+    console.log('Idade da pessoa:', pessoa.idade);
+    console.log('CPF da pessoa:', pessoa.cpf);
+    pessoa.dizerOla();
+    pessoa.dizerTchau();
+
+    console.log(pessoa);
+
+    // pessoa = {}; // TypeError
+
+</script>

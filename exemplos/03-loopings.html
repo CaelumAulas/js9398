@@ -1,0 +1,47 @@
+<meta charset="utf-8">
+<h1>Looping - Jogo da Forca</h1>
+
+<script>
+
+    let palavra = prompt("Informe uma palavra qualquer:").toUpperCase();
+    let placeholder = "";
+
+    // for...of: Serve para percorrer objetos ou valores iteráveis => Array, String, Map, Set, etc.
+    for (let letra of palavra)
+    {
+        placeholder += "#";
+    }
+
+    console.log("JOGO DA FORCA:");
+    console.log(placeholder);
+
+    do {
+        let letra = prompt("Informe uma letra da palavra:").toUpperCase();
+
+        while(!letra.trim() || letra.length > 1 || !isNaN(letra)) 
+        {
+            letra = prompt("Letra inválida! Informe uma letra da palavra:").toUpperCase();
+        }
+
+        // String => Array
+        placeholder = Array.from(placeholder);
+
+        for (let i = 0; i < palavra.length; i++)
+        {
+            if (letra == palavra[i])
+            {
+                placeholder[i] = letra;
+            }
+        }
+
+        placeholder = placeholder.join("");
+        
+        console.clear();
+        console.log("JOGO DA FORCA:");
+        console.log(placeholder);
+    }
+    while(palavra != placeholder);
+
+    alert(`Parabéns! A palavra era: ${palavra}`);
+
+</script>
