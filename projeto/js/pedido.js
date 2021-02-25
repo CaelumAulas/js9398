@@ -1,39 +1,26 @@
-// IIFE
-const moduloPedido = (function() {
 
-    const pedido = {
-        produtos: []
+const pedido = {
+    produtos: []
+}
+
+export function adicionarProduto(produto)
+{
+    if (!pedido.produtos.includes(produto)) {
+        pedido.produtos.push(produto);
     }
+}
 
-    function adicionarProduto(produto)
-    {
-        if (!pedido.produtos.includes(produto)) {
-            pedido.produtos.push(produto);
-        }
-    }
+export function getProdutos()
+{
+    return pedido.produtos;
+}
 
-    function getProdutos()
-    {
-        return pedido.produtos;
-    }
+export function getTotal()
+{
+    return pedido.produtos.reduce((valorAcumulado, produto) => valorAcumulado + (produto.preco * produto.quantidade), 0);
+}
 
-    function getTotal()
-    {
-        return pedido.produtos.reduce((valorAcumulado, produto) => valorAcumulado + (produto.preco * produto.quantidade), 0);
-    }
-
-    function getPedido()
-    {
-        return pedido;
-    }
-
-    return {
-        // todos os recursos do módulo que eu quiser deixar público deve ser colocado aqui
-        adicionarProduto,
-        getProdutos,
-        getTotal,
-        getPedido
-    }
-
-})();
-
+export function getPedido()
+{
+    return pedido;
+}
