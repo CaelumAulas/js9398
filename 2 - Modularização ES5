@@ -1,6 +1,6 @@
 Arquivos:
-    * js/contatos.js : Gerencia a lista de contatos em memória
-    * js/tabela.js : Exibe as informações presentes na lista de contatos na interface
+    * js/contatos.js : Gerencia a lista de contatos em memória (moduloContatos)
+    * js/tabela.js : Exibe as informações presentes na lista de contatos na interface (moduloTabela)
     * js/formulario.js : Gerencia o formulário da interface (coleta dados e os valida antes de inserir na lista de contatos)
 
 
