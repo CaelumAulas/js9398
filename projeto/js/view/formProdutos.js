@@ -16,10 +16,10 @@ let opcoes_select = '';
 listaProdutos.forEach(function (pizza) {
     // opcoes_select += '<option value="' + pizza.id + '">' + pizza.nome + ' - ' + pizza.preco + '</option>'; // concatenação
     opcoes_select += `
-            <option value="${pizza.id}">
-                ${pizza.nome} - ${formataMoeda(pizza.preco)}
-            </option>
-        `;
+        <option value="${pizza.id}">
+            ${pizza.nome} - ${formataMoeda(pizza.preco)}
+        </option>
+    `;
 });
 
 seletor_produto.innerHTML = opcoes_select;

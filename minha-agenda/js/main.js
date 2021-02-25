@@ -1,1 +1,2 @@
-// insira seu código aqui
+import './formulario.js';
+import './tabela.js';

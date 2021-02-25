@@ -37,7 +37,7 @@
     console.log(usuariosMenos30);
 
     // some(): percorre um array e checa se ao menos 1 elemento atende a condição especificada, se sim retorna TRUE, caso contrario FALSE
-    let temAlguemInativo = usuarios.some(usuario => !usuario.ativo) ? "HÁ AO MENOS 1 USUÁRIO INATIVO NA LISTA" : "NÃO HÁ USUARIOS INATIVOS NA LISTA";
+    let temAlguemInativo = usuarios.some(u => !u.ativo) ? "HÁ AO MENOS 1 USUÁRIO INATIVO NA LISTA" : "NÃO HÁ USUARIOS INATIVOS NA LISTA";
     console.log(temAlguemInativo);
 
     // every(): percorre um array e checa se TODOS OS ELEMENTOS atendem a condição especificada, se sim retorna TRUE, caso contrario FALSE 

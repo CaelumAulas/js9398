@@ -1,25 +1,18 @@
-const moduloTabela = (function() {
+import { getContatos } from "./contatos.js";
 
-    function exibirContatos()
+export function exibirContatos()
+{
+    let tr = '';
+
+    for (let contato of getContatos())
     {
-        let tr = '';
-
-        for (let contato of moduloContatos.getContatos())
-        {
-            tr += `
-                <tr>
-                    <td>${contato.nome}</td>
-                    <td>${contato.telefone}</td>
-                </tr>
-            `;
-        }
-
-        tabelaContatos.innerHTML = tr;
+        tr += `
+            <tr>
+                <td>${contato.nome}</td>
+                <td>${contato.telefone}</td>
+            </tr>
+        `;
     }
 
-    return {
-        exibirContatos
-    }
-
-})();
-
+    tabelaContatos.innerHTML = tr;
+}

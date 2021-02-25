@@ -1,0 +1,7 @@
+Refatore o código criado para o projeto "Minha Agenda" para que este siga o padrão de modularização do ECMAScript 6.
+
+Obs.:
+    1) As IIFE's não são mais necessárias quando usamos Módulos ES6 
+    2) É necessário um arquivo centralizador onde os arquivos iniciais são importados marcado com o atributo 'type="module"'
+    3) Usamos o comando "export" para marcar os recursos que queremos tornar "públicos"
+    4) Usamos o comando "import" para importar os recursos que precisamos de cada módulo

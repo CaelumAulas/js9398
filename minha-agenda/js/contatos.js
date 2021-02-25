@@ -1,29 +1,22 @@
-const moduloContatos = (function() {
+import { exibirContatos } from "./tabela.js";
 
-    const contatos = [];
+const contatos = [];
 
-    function adicionarContato(nome, telefone)
-    {
-        const infoContato = { nome, telefone };
-        let contatoExists = contatos.some(c => c.nome.toUpperCase() == nome.toUpperCase());
+export function adicionarContato(nome, telefone)
+{
+    const infoContato = { nome, telefone };
+    let contatoExists = contatos.some(c => c.nome.toUpperCase() == nome.toUpperCase());
 
-        if (contatoExists) {
-            alert('Contato já está na sua lista!');
-        }
-        else {
-            contatos.push(infoContato);
-            moduloTabela.exibirContatos();
-        }
+    if (contatoExists) {
+        alert('Contato já está na sua lista!');
     }
-
-    function getContatos()
-    {
-        return contatos;
+    else {
+        contatos.push(infoContato);
+        exibirContatos();
     }
+}
 
-    return {
-        getContatos,
-        adicionarContato
-    }
-
-})();
+export function getContatos()
+{
+    return contatos;
+}
