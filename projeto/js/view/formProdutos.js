@@ -3,6 +3,16 @@ import { formataMoeda } from '../utils/formataMoeda.js';
 import { adicionarProduto } from "../pedido.js";
 import { exibirProdutosPedido } from "./tabelaProdutosPedido.js";
 
+/** @type {HTMLSelectElement} */
+const seletorProduto = document.querySelector('#seletor_produto');
+
+/** @type {HTMLInputElement} */
+const inputQuantidade = document.querySelector('#input_quantidade');
+
+/** @type {HTMLButtonElement} */
+const btnAdicionarProduto = document.querySelector('#btnAdicionarProduto');
+
+
 const listaProdutos = [
     { id: 1, nome: 'Pizza de Calabresa', foto: 'pizza-calabresa.jpg', preco: 52.99 },
     { id: 2, nome: 'Pizza 4 Queijos', foto: 'pizza-4-queijos.jpg', preco: 65.82 },
@@ -22,11 +32,11 @@ listaProdutos.forEach(function (pizza) {
     `;
 });
 
-seletor_produto.innerHTML = opcoes_select;
+seletorProduto.innerHTML = opcoes_select;
 
 btnAdicionarProduto.addEventListener('click', function () {
-    let produto_id = parseInt(seletor_produto.value);
-    let quantidade = parseInt(input_quantidade.value);
+    let produto_id = parseInt(seletorProduto.value);
+    let quantidade = parseInt(inputQuantidade.value);
 
     const produto_selecionado = listaProdutos.find(produto => produto.id === produto_id);
 
