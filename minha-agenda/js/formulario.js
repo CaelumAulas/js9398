@@ -1,5 +1,9 @@
 import { adicionarContato } from "./contatos.js";
 
+const btnSalvar = document.querySelector('#btnSalvar');
+const inputNome = document.querySelector('#inputNome');
+const inputTelefone = document.querySelector('#inputTelefone');
+
 btnSalvar.addEventListener('click', function() {
     let nome = inputNome.value.trim();
     let telefone = inputTelefone.value.trim();

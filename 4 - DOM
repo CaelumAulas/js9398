@@ -1,4 +1,6 @@
-1) Guardar as referências dos elementos da interface usando os recursos da DOM API
+1) Guardar as referências dos elementos da interface usando os recursos da DOM API (document.querySelector)
 2) Usar EVENT DELEGATION para remoção de itens da agenda
-3) Persistir das informações usando Storage API 
-4) Criar o método de remoção de itens no módulo correto.
+    => Evento click adicionado a tabela onde monitoramos se quem foi clicado foi o botão "Excluir"
+
+3) Criar o método de remoção de itens no módulo correto (contatos.js)
+4) Persistir as informações usando Storage API (LocalStorage)
