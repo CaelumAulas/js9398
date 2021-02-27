@@ -1,13 +1,18 @@
 
-const pedido = {
-    produtos: []
-}
+const pedido = JSON.parse(localStorage.getItem('dados_pedido')) || { produtos: [] };
 
 export function adicionarProduto(produto)
 {
-    if (!pedido.produtos.includes(produto)) {
-        pedido.produtos.push(produto);
+    let indiceProduto = pedido.produtos.findIndex(p => p.id === produto.id);
+
+    if (indiceProduto < 0) {
+        pedido.produtos.push(produto);    
     }
+    else {
+        pedido.produtos[indiceProduto] = produto;
+    }
+
+    localStorage.setItem('dados_pedido', JSON.stringify(pedido));
 }
 
 /**
@@ -22,6 +27,7 @@ export function removerProduto(indice)
     }
     else {
         pedido.produtos.splice(indice, 1);
+        localStorage.setItem('dados_pedido', JSON.stringify(pedido));
     }
 }
 

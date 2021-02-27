@@ -1,0 +1,39 @@
+<meta charset="utf-8" />
+<h1>Web Storage</h1>
+
+Nome: <br>
+<input type="text" id="inputNome" />
+<button id="btnGuardar">
+    Guardar
+</button>
+<button id="btnLimpar">
+    Limpar
+</button>
+
+<br><br>
+
+<script>
+
+    // sessionStorage = armazenamento temporário
+    // localStorage = armazenamento permanente
+
+    const inputNome = document.querySelector('#inputNome');
+    const btnGuardar = document.querySelector('#btnGuardar');
+    const btnLimpar = document.querySelector('#btnLimpar');
+
+    let nome = localStorage.getItem('nomePessoa') || "Não há informações guardadas para serem exibidas!";
+    document.write(`O valor da localStorage é: ${nome}`);
+
+    btnGuardar.addEventListener('click', () => {
+        let valor = inputNome.value.trim();
+        localStorage.setItem('nomePessoa', valor);
+        alert('Valor guardado com sucesso!');
+        window.location.reload();
+    });
+
+    btnLimpar.addEventListener('click', () => {
+        localStorage.removeItem('nomePessoa');
+        window.location.reload();
+    })
+
+</script>

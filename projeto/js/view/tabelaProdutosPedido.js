@@ -4,6 +4,7 @@ import { formataMoeda } from "../utils/formataMoeda.js";
 const tbodyProdutos = document.querySelector('#tbodyProdutos');
 const tdTotalPedido = document.querySelector('#tdTotalPedido');
 
+exibirProdutosPedido();
 export function exibirProdutosPedido()
 {
     let tr = '';
