@@ -5,16 +5,17 @@ const contatos = JSON.parse(localStorage.getItem('contatosAgenda')) || [];
 export function adicionarContato(nome, telefone)
 {
     const infoContato = { nome, telefone };
-    let contatoExists = contatos.some(c => c.nome.toUpperCase() == nome.toUpperCase());
+    let posicaoContato = contatos.findIndex(c => c.nome.toUpperCase() == nome.toUpperCase());
 
-    if (contatoExists) {
-        alert('Contato já está na sua lista!');
+    if (posicaoContato >= 0) {
+        contatos[posicaoContato] = infoContato;
     }
     else {
         contatos.push(infoContato);
-        localStorage.setItem('contatosAgenda', JSON.stringify(contatos));
-        exibirContatos();
     }
+
+    localStorage.setItem('contatosAgenda', JSON.stringify(contatos));
+    exibirContatos();
 }
 
 export function removerContato(indice)
