@@ -1,7 +1,8 @@
 /** Módulo responsável por gerenciar o formulário de produtos da aplicação */
 import { formataMoeda } from '../utils/formataMoeda.js';
-import { adicionarProduto } from "../pedido.js";
+import * as PedidoController from "../controller/PedidoController.js";
 import { exibirProdutosPedido } from "./tabelaProdutosPedido.js";
+import Produto from "../model/Produto.js";
 
 /** @type {HTMLSelectElement} */
 const seletorProduto = document.querySelector('#seletor_produto');
@@ -14,11 +15,11 @@ const btnAdicionarProduto = document.querySelector('#btnAdicionarProduto');
 
 
 const listaProdutos = [
-    { id: 1, nome: 'Pizza de Calabresa', foto: 'pizza-calabresa.jpg', preco: 52.99 },
-    { id: 2, nome: 'Pizza 4 Queijos', foto: 'pizza-4-queijos.jpg', preco: 65.82 },
-    { id: 3, nome: 'Pizza de Frango Catupiry', foto: 'pizza-frango-catupiry.jpg', preco: 45.93 },
-    { id: 4, nome: 'Pizza Marguerita', foto: 'pizza-marguerita.jpg', preco: 32.75 },
-    { id: 5, nome: 'Pizza Portuguesa', foto: 'pizza-portuguesa.jpg', preco: 55.99 }
+    new Produto(1, 'Pizza de Calabresa', 'pizza-calabresa.jpg', 52.99),
+    new Produto(2, 'Pizza 4 Queijos', 'pizza-4-queijos.jpg', 65.82),
+    new Produto(3, 'Pizza de Frango Catupiry', 'pizza-frango-catupiry.jpg', 45.93),
+    new Produto(4, 'Pizza Marguerita', 'pizza-marguerita.jpg', 32.75),
+    new Produto(5, 'Pizza Portuguesa', 'pizza-portuguesa.jpg', 55.99)
 ];
 
 let opcoes_select = '';
@@ -49,7 +50,7 @@ btnAdicionarProduto.addEventListener('click', function () {
     else {
         // adicionar o produto selecionado ao pedido
         produto_selecionado.quantidade = quantidade;
-        adicionarProduto(produto_selecionado);
+        PedidoController.adicionarProduto(produto_selecionado);
         exibirProdutosPedido();
     }
 });

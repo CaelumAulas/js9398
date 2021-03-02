@@ -1,4 +1,4 @@
-import { getProdutos, getTotal, removerProduto } from "../pedido.js";
+import * as PedidoController from "../controller/PedidoController.js";
 import { formataMoeda } from "../utils/formataMoeda.js";
 
 const tbodyProdutos = document.querySelector('#tbodyProdutos');
@@ -8,7 +8,7 @@ exibirProdutosPedido();
 export function exibirProdutosPedido()
 {
     let tr = '';
-    const produtosDoPedido = getProdutos();
+    const produtosDoPedido = PedidoController.getProdutos();
     produtosDoPedido.forEach((produto, indice) => {
         tr += `
             <tr>
@@ -28,14 +28,14 @@ export function exibirProdutosPedido()
         `;
     });
 
-    let totalDoPedido = getTotal();
+    let totalDoPedido = PedidoController.getTotal();
     tbodyProdutos.innerHTML = tr;
     tdTotalPedido.innerHTML = formataMoeda(totalDoPedido);
 }
 
 tbodyProdutos.addEventListener('click', ({ target: { tagName, dataset: { indice } }}) => {
     if (tagName == 'BUTTON') {
-        removerProduto(indice);
+        PedidoController.removerProduto(indice);
         exibirProdutosPedido();
     }
 });

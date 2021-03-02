@@ -1,0 +1,72 @@
+<meta charset="utf-8">
+<h1>Orientação a Objetos com JavaScript</h1>
+
+<script>
+
+    // Função Construtora
+    function Carro(modelo, marca, ano)
+    {
+        this.modelo = modelo;
+        this.marca = marca;
+        this.ano = ano;
+        this.opcionais = [];
+    }
+
+    Carro.prototype = {
+        andar() {
+            console.log('O carro ' + this.modelo + ' está andando...');
+        },
+
+        parar() {
+            console.log('O carro ' + this.modelo + ' está parando...');
+        }
+    }
+
+
+
+    function cadastrarCarro(carro)
+    {
+        if (!(carro instanceof Carro)) {
+            alert('Tipo de dado inválido!');
+            return;
+        }
+
+        console.log('Registrando carro no banco de dados:');
+        console.log('Modelo:', carro.modelo);
+        console.log('Marca:', carro.marca);
+        console.log('Ano:', carro.ano);
+
+        console.log('Testando carro...');
+        carro.andar();
+        carro.parar();
+    }
+
+    // objeto literal ou genérico
+    const carro1 = {
+        modelo: 'Onix',
+        marca: 'Chevrolet',
+        ano: 2019,
+
+        andar() {
+            console.log('O carro ' + this.modelo + ' está andando...');
+        },
+
+        parar() {
+            console.log('O carro ' + this.modelo + ' está parando...');
+        }
+    }
+
+    // objeto criado a partir da função construtora Carro
+    const carro2 = new Carro('Prisma', 'Chevrolet', 2020);
+    const carro3 = new Carro('147', 'Fiat', 1987);
+
+    // cadastrarCarro(carro1); // Ok
+    // cadastrarCarro(carro2); // Ok
+
+    // cadastrarCarro("Jhonatan"); // Cai na validação
+    // cadastrarCarro(52); // Cai na validação
+    // cadastrarCarro({}); // Passa na validação (Erro)
+    // cadastrarCarro(window); // Passa na validação (Erro)
+    // cadastrarCarro([]); // Passa na validação (Erro)
+
+</script>
