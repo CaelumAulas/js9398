@@ -1,0 +1,34 @@
+<meta charset="utf-8">
+<h1>Parâmetros REST</h1>
+
+<script>
+
+    // Parâmetro REST: é a possibilidade de termos uma função com um número de parâmetros indeterminado
+    // Obs.: O parâmetro REST é sempre um ARRAY
+    function somarNumeros( ...valores )
+    {
+        let resultado = valores.reduce((total, valor) => total + valor, 0);
+        console.log('Resultado da Soma:', resultado, valores);
+    }
+
+    somarNumeros(5, 8);
+    somarNumeros(8, 7, 2, 10, 20, 2, 5);
+    somarNumeros(9, 1, 3);
+    somarNumeros(3);
+
+    const numeros = [3, 5, 10, 20, 25, 30, 35];
+    somarNumeros( ...numeros ); // spread operator
+
+    // Parâmetro REST deve ser sempre o último parâmetro de uma função
+    function exibirRegiaoEstados(regiao, ...estados)
+    {
+        console.log(`
+            Região: ${regiao}
+            Estados: ${estados}
+        `);
+    }
+
+    exibirRegiaoEstados("Sudeste", "São Paulo", "Minas Gerais", "Espirito Santo", "Rio de Janeiro");
+    exibirRegiaoEstados("Sul", "Rio Grande do Sul", "Santa Catarina", "Paraná");
+
+</script>

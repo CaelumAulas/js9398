@@ -9,9 +9,8 @@ window.addEventListener('load', () => {
 export function exibirContatos()
 {
     let tr = '';
-    let indice = 0;
 
-    for (let contato of getContatos())
+    for (let [indice, contato] of Object.entries(getContatos()))
     {
         tr += `
             <tr>
@@ -24,8 +23,6 @@ export function exibirContatos()
                 </td>
             </tr>
         `;
-
-        indice = indice + 1;
     }
 
     tabelaContatos.innerHTML = tr;

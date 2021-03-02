@@ -33,9 +33,8 @@ export function exibirProdutosPedido()
     tdTotalPedido.innerHTML = formataMoeda(totalDoPedido);
 }
 
-tbodyProdutos.addEventListener('click', (event) => {
-    if (event.target.tagName == 'BUTTON') {
-        let indice = event.target.dataset.indice;
+tbodyProdutos.addEventListener('click', ({ target: { tagName, dataset: { indice } }}) => {
+    if (tagName == 'BUTTON') {
         removerProduto(indice);
         exibirProdutosPedido();
     }
