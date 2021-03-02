@@ -1,5 +1,9 @@
+import Pedido from '../model/Pedido.js';
+import Produto from '../model/Produto.js';
 
-const pedido = JSON.parse(localStorage.getItem('dados_pedido')) || { produtos: [] };
+/** @type {Pedido} */
+const pedido = JSON.parse(localStorage.getItem('dados_pedido')) || new Pedido();
+Object.setPrototypeOf(pedido, Pedido.prototype);
 
 export function adicionarProduto(produto)
 {
@@ -33,7 +37,7 @@ export function removerProduto(indice)
 
 export function getProdutos()
 {
-    return pedido.produtos;
+    return pedido.produtos.map(produto => Object.setPrototypeOf(produto, Produto.prototype));
 }
 
 /**
@@ -42,7 +46,7 @@ export function getProdutos()
  */
 export function getTotal()
 {
-    return pedido.produtos.reduce((valorAcumulado, produto) => valorAcumulado + (produto.preco * produto.quantidade), 0);
+    return pedido.getTotal();
 }
 
 export function getPedido()

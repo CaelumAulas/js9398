@@ -23,7 +23,7 @@ export function exibirProdutosPedido()
                 </td>
                 <td>${produto.quantidade}</td>
                 <td>${formataMoeda(produto.preco)}</td>
-                <td>${formataMoeda(produto.preco * produto.quantidade)}</td>
+                <td>${formataMoeda(produto.getSubtotal())}</td>
             </tr>
         `;
     });
