@@ -1,0 +1,38 @@
+<meta charset="utf-8">
+<h1>Erros customizados / Tratamento de Erros</h1>
+
+<script>
+
+    // Erro Customizado
+    class ValidacaoErro extends Error {
+        constructor(mensagem, elemento = null) {
+            super(mensagem);
+        }
+    }
+
+    try 
+    {
+        // código que potencialmente pode gerar um erro
+        let nome = prompt('Digite seu nome:');
+        let sobrenome = [];
+
+        if (nome.trim() === '') {
+            throw new ValidacaoErro('Por favor, digite um nome válido!'); // Erro Customizado
+        }
+
+        console.log('Nome digitado: ', nome);
+        console.log(sobrenome.toUpperCase()); // TypeError
+    }
+    catch(erro)
+    {
+        // captura o erro gerado no bloco try e define o que fazer com ele
+        if (erro instanceof ValidacaoErro) {
+            alert(erro);
+        }
+        else {
+            alert('Um erro inesperado aconteceu na aplicação. Entre em contato com o administrador!');
+            console.error(erro);
+        }
+    }
+
+</script>

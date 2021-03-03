@@ -1,0 +1,29 @@
+<meta charset="utf-8">
+<h1>Orientação a Objetos com JavaScript (ES6)</h1>
+
+<script>
+
+    class Carro {
+        constructor(modelo = '', marca = '', ano = 0) {
+            this.modelo = modelo;
+            this.marca = marca;
+            this.ano = ano;
+        }
+
+        /* métodos são associados automaticamente ao prototype */
+        andar() {
+            console.log('O carro ' + this.modelo + ' está andando...');
+        }
+
+        parar() {
+            console.log('O carro ' + this.modelo + ' está parando...');
+        }
+    }
+
+    const carro1 = new Carro('Cruze', 'Chevrolet', 2014);
+    const carro2 = new Carro('Sportage', 'Kia', 2016);
+
+    console.log(carro1);
+    console.log(carro2);
+
+</script>

@@ -1,0 +1,45 @@
+<meta charset="utf-8">
+<h1>Herança ES6</h1>
+
+<script>
+
+    class Cliente {
+        constructor(id, nome, email, senha, telefone) {
+            this.id = id;
+            this.nome = nome;
+            this.email = email;
+            this.senha = senha;
+            this.telefone = telefone;
+        }
+
+        login() {
+            console.log(this.nome + ' está logando no sistema...');
+        }
+
+        logout() {
+            console.log(this.nome + ' está deslogando do sistema...');
+        }
+
+        comprar() {
+            console.log(this.nome + ' está comprando na loja...');
+        }
+
+        // Sobrescreve o método toString() da classe-pai ou seja de Object
+        toString() {
+            return 'Objeto do tipo Cliente: ' + this.nome;
+        }
+    }
+
+    /* Definição da Classe-Filha */
+    class ClienteVIP extends Cliente {
+        constructor(id, nome, email, senha, telefone, foto) {
+            super(id, nome, email, senha, telefone);
+            this.foto = foto;
+        }
+
+        enviarMensagem() {
+            console.log(this.nome + ' está enviando uma mensagem para os ADMs...');
+        }
+    }
+
+</script>
