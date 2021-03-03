@@ -1,10 +1,12 @@
-import { exibirContatos } from "./tabela.js";
+import Contato from "../model/Contato.js";
+import { exibirContatos } from "../view/tabela.js";
 
+/** @type {Array<Contato>} */
 const contatos = JSON.parse(localStorage.getItem('contatosAgenda')) || [];
 
 export function adicionarContato(nome, telefone)
 {
-    const infoContato = { nome, telefone };
+    const infoContato = new Contato(nome, telefone);
     let posicaoContato = contatos.findIndex(c => c.nome.toUpperCase() == nome.toUpperCase());
 
     if (posicaoContato >= 0) {

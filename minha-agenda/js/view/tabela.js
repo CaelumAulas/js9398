@@ -1,4 +1,4 @@
-import { getContatos, removerContato } from "./contatos.js";
+import * as ContatosController from "../controller/ContatosController.js";
 
 const tabelaContatos = document.querySelector('#tabelaContatos');
 
@@ -10,7 +10,7 @@ export function exibirContatos()
 {
     let tr = '';
 
-    for (let [indice, contato] of Object.entries(getContatos()))
+    for (let [indice, contato] of Object.entries(ContatosController.getContatos()))
     {
         tr += `
             <tr>
@@ -31,7 +31,7 @@ export function exibirContatos()
 tabelaContatos.addEventListener('click', (event) => {
     if (event.target.tagName === 'BUTTON') {
         let indice = event.target.dataset.indice;
-        removerContato(indice);
+        ContatosController.removerContato(indice);
         exibirContatos();
     }
 });

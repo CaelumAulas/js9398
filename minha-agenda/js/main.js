@@ -1,2 +1,2 @@
-import './formulario.js';
-import './tabela.js';
+import './view/formulario.js';
+import './view/tabela.js';

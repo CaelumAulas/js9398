@@ -1,4 +1,4 @@
-import { adicionarContato } from "./contatos.js";
+import * as ContatosController from "../controller/ContatosController.js";
 
 const btnSalvar = document.querySelector('#btnSalvar');
 const inputNome = document.querySelector('#inputNome');
@@ -15,7 +15,7 @@ btnSalvar.addEventListener('click', function() {
         alert('Telefone é inválido!');
     }
     else {
-        adicionarContato(nome, telefone);
+        ContatosController.adicionarContato(nome, telefone);
     }
 });
 
