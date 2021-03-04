@@ -1,4 +1,5 @@
 import Contato from "../model/Contato.js";
+import ContatoError from "../model/ContatoError.js";
 import { exibirContatos } from "../view/tabela.js";
 
 /** @type {Array<Contato>} */
@@ -6,6 +7,13 @@ const contatos = JSON.parse(localStorage.getItem('contatosAgenda')) || [];
 
 export function adicionarContato(nome, telefone)
 {
+    if (!nome) {
+        throw new ContatoError('Nome é obrigatório!');
+    }
+    else if (!telefone || telefone.length < 14) {
+        throw new ContatoError('Telefone é inválido!');
+    }
+
     const infoContato = new Contato(nome, telefone);
     let posicaoContato = contatos.findIndex(c => c.nome.toUpperCase() == nome.toUpperCase());
 
@@ -23,7 +31,7 @@ export function adicionarContato(nome, telefone)
 export function removerContato(indice)
 {
     if (isNaN(indice) || indice < 0 || indice >= contatos.length) {
-        alert('Índice informado é inválido!');
+        throw new ContatoError('Índice informado é inválido!');
     }
     else {
         contatos.splice(indice, 1);

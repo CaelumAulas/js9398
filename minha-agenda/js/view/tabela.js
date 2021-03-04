@@ -1,4 +1,5 @@
 import * as ContatosController from "../controller/ContatosController.js";
+import ContatoError from "../model/ContatoError.js";
 
 const tabelaContatos = document.querySelector('#tabelaContatos');
 
@@ -29,9 +30,21 @@ export function exibirContatos()
 }
 
 tabelaContatos.addEventListener('click', (event) => {
-    if (event.target.tagName === 'BUTTON') {
-        let indice = event.target.dataset.indice;
-        ContatosController.removerContato(indice);
-        exibirContatos();
+    try
+    {
+        if (event.target.tagName === 'BUTTON') {
+            let indice = event.target.dataset.indice;
+            ContatosController.removerContato(indice);
+            exibirContatos();
+        }
+    }
+    catch(erro) {
+        if (erro instanceof ContatoError) {
+            alert(erro);
+        }
+        else {
+            alert('Erro ao remover o contato selecionado da sua agenda!');
+            console.error(erro);
+        }
     }
 });

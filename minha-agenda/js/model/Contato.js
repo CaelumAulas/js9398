@@ -1,5 +1,6 @@
-export default function Contato(nome = '', telefone = '')
-{
-    this.nome = nome;
-    this.telefone = telefone;
+export default class Contato {
+    constructor(nome = '', telefone = '') {
+        this.nome = nome;
+        this.telefone = telefone;
+    }
 }
