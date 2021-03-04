@@ -1,12 +1,23 @@
 import Pedido from '../model/Pedido.js';
 import Produto from '../model/Produto.js';
+import PedidoError from '../model/PedidoError.js';
 
 /** @type {Pedido} */
 const pedido = JSON.parse(localStorage.getItem('dados_pedido')) || new Pedido();
 Object.setPrototypeOf(pedido, Pedido.prototype);
 
+
+/**
+ * Adiciona um produto ao pedido do cliente
+ * @param {Produto} produto  Produto a ser adicionado ao pedido
+ * @returns {void}
+ */
 export function adicionarProduto(produto)
 {
+    if (produto.quantidade <= 0) {
+        throw new PedidoError('Quantidade inválida! Informe um valor maior ou igual a 1.');
+    }
+
     let indiceProduto = pedido.produtos.findIndex(p => p.id === produto.id);
 
     if (indiceProduto < 0) {
@@ -27,7 +38,7 @@ export function adicionarProduto(produto)
 export function removerProduto(indice)
 {
     if (isNaN(indice) || indice < 0 || indice >= pedido.produtos.length) {
-        alert('Índice informado é inválido!');
+        throw new PedidoError('Índice informado é inválido!');
     }
     else {
         pedido.produtos.splice(indice, 1);

@@ -1,0 +1,9 @@
+Refatore o código do projeto Minha Agenda para que este passe a implementar as características abaixo:
+
+1) Erros customizados
+    a) Defina a classe ContatoError
+    b) Utilize-a para lançar quaisquer erros relacionados às operações com contatos 
+       (como a validação dos valores antes de repassá-los ao objeto ou mesmo a exclusão de um contato)
+    c) Tratar os erros com um bloco try...catch exibindo uma mensagem de erro genérica para erros não customizados 
+
+2) Transformar as Funções Construtoras em Classes

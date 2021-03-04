@@ -1,10 +1,12 @@
 import * as PedidoController from "../controller/PedidoController.js";
+import PedidoError from "../model/PedidoError.js";
 import { formataMoeda } from "../utils/formataMoeda.js";
 
 const tbodyProdutos = document.querySelector('#tbodyProdutos');
 const tdTotalPedido = document.querySelector('#tdTotalPedido');
 
-exibirProdutosPedido();
+window.addEventListener('load', () => exibirProdutosPedido());
+
 export function exibirProdutosPedido()
 {
     let tr = '';
@@ -34,9 +36,21 @@ export function exibirProdutosPedido()
 }
 
 tbodyProdutos.addEventListener('click', ({ target: { tagName, dataset: { indice } }}) => {
-    if (tagName == 'BUTTON') {
-        PedidoController.removerProduto(indice);
-        exibirProdutosPedido();
+    try 
+    {
+        if (tagName == 'BUTTON') {
+            PedidoController.removerProduto(indice);
+            exibirProdutosPedido();
+        }
+    }
+    catch(erro) {
+        if (erro instanceof PedidoError) {
+            alert(erro);
+        }
+        else {
+            alert('Um erro inesperado ocorreu ao remover o produto do seu pedido. Entre em contato com o administrador!');
+            console.error(erro);
+        }
     }
 });
 
