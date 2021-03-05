@@ -2,6 +2,8 @@ import CorreiosController from '../controller/CorreiosController.js';
 import CorreiosError from '../model/CorreiosError.js';
 import ValidacaoController from '../controller/ValidacaoController.js';
 import ValidacaoError from '../model/ValidacaoError.js';
+import * as PedidoController from '../controller/PedidoController.js';
+import PedidoError from '../model/PedidoError.js';
 
 // Guardas os elementos da interface
 const btnEnviarPedido = document.querySelector('#btnEnviarPedido');
@@ -54,13 +56,13 @@ btnEnviarPedido.addEventListener('click', () => {
     try
     {
         ValidacaoController.validarCampos(camposObrigatorios);
-        // enviar dados do pedido para o back-end
+        PedidoController.enviarPedido(formularioPedido);
     }
     catch(erro)
     {
-        if (erro instanceof ValidacaoError) {
+        if (erro instanceof ValidacaoError || erro instanceof PedidoError) {
             alert(erro);
-            erro.campo.focus();
+            erro.campo?.focus();
         }
         else {
             alert('Um erro inesperado ocorreu ao enviar informações do seu pedido. Tente novamente!');

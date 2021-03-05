@@ -64,3 +64,23 @@ export function getPedido()
 {
     return pedido;
 }
+
+/**
+ * Envia os dados do pedido para salvamento no Back-end da aplicação
+ * @returns {Promise<string>}
+ */
+export function enviarPedido(formularioPedido)
+{
+    if (pedido.produtos.length == 0) {
+        throw new PedidoError('Seu pedido deve ter ao menos 1 produto!', pedido);
+    }
+
+    for (let propriedade in formularioPedido)
+    {
+        let propriedade_referencia = propriedade.replace(/(input_|seletor_)/g, '');
+        pedido[propriedade_referencia] = formularioPedido[propriedade].value;
+    }
+
+    console.log('Pedido: ', pedido);
+    alert('Enviando dados pro back-end...');
+}

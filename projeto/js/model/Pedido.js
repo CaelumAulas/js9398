@@ -2,7 +2,7 @@ import Produto from './Produto.js';
 
 export default class Pedido {
     constructor() {
-        this.id = 1;
+        this.id = generateRandomId();
         this.nomeCompleto = null;
         this.email = null;
         this.telefone = null;
@@ -23,3 +23,10 @@ export default class Pedido {
         return this.produtos.reduce((total, produto) => total + produto.getSubtotal(), 0);
     }
 }
+
+function generateRandomId()
+{
+    let numeroAleatorio = parseInt(Math.random() * 10000);
+    return numeroAleatorio.toString().padStart(8, '0');
+}
+
