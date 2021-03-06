@@ -4,6 +4,8 @@ import ValidacaoController from '../controller/ValidacaoController.js';
 import ValidacaoError from '../model/ValidacaoError.js';
 import * as PedidoController from '../controller/PedidoController.js';
 import PedidoError from '../model/PedidoError.js';
+import { exibirProdutosPedido } from "./tabelaProdutosPedido.js";
+import { exibirCodigoPedido } from "./divFinalizacaoPedido.js";
 
 // Guardas os elementos da interface
 const btnEnviarPedido = document.querySelector('#btnEnviarPedido');
@@ -52,11 +54,14 @@ formularioPedido.input_cep.addEventListener('change', async () => {
  * Quando o usuário clicar no botão de envio do pedido, pegamos as informações e validamos
  * antes de realizar o envio para o back-end da aplicação
  */
-btnEnviarPedido.addEventListener('click', () => {
+btnEnviarPedido.addEventListener('click', async () => {
     try
     {
         ValidacaoController.validarCampos(camposObrigatorios);
-        PedidoController.enviarPedido(formularioPedido);
+        let codigoPedido = await PedidoController.enviarPedido(formularioPedido);
+        exibirCodigoPedido(codigoPedido);
+        exibirProdutosPedido();
+        todosOsCampos.forEach(campo => campo.value = '');
     }
     catch(erro)
     {

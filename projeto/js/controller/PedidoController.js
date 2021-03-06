@@ -1,6 +1,7 @@
 import Pedido from '../model/Pedido.js';
 import Produto from '../model/Produto.js';
 import PedidoError from '../model/PedidoError.js';
+import PedidoService from '../services/PedidoService.js';
 
 /** @type {Pedido} */
 const pedido = JSON.parse(localStorage.getItem('dados_pedido')) || new Pedido();
@@ -69,7 +70,7 @@ export function getPedido()
  * Envia os dados do pedido para salvamento no Back-end da aplicação
  * @returns {Promise<string>}
  */
-export function enviarPedido(formularioPedido)
+export async function enviarPedido(formularioPedido)
 {
     if (pedido.produtos.length == 0) {
         throw new PedidoError('Seu pedido deve ter ao menos 1 produto!', pedido);
@@ -81,6 +82,14 @@ export function enviarPedido(formularioPedido)
         pedido[propriedade_referencia] = formularioPedido[propriedade].value;
     }
 
-    console.log('Pedido: ', pedido);
-    alert('Enviando dados pro back-end...');
+    const status = await PedidoService.salvarPedido(pedido);
+    console.log(status);
+
+    let codigoPedido = pedido.id;
+    localStorage.removeItem('dados_pedido');
+
+    // Renova as propriedades do objeto pedido na aplicação
+    Object.assign(pedido, new Pedido);
+
+    return codigoPedido;
 }

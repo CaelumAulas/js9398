@@ -1,20 +1,16 @@
 import Produto from '../model/Produto.js';
 import ProdutoError from '../model/ProdutoError.js';
+import ProdutosService from '../services/ProdutosService.js';
 
-const listaProdutos = [
-    new Produto(1, 'Pizza de Calabresa', 'pizza-calabresa.jpg', 52.99),
-    new Produto(2, 'Pizza 4 Queijos', 'pizza-4-queijos.jpg', 65.82),
-    new Produto(3, 'Pizza de Frango Catupiry', 'pizza-frango-catupiry.jpg', 45.93),
-    new Produto(4, 'Pizza Marguerita', 'pizza-marguerita.jpg', 32.75),
-    new Produto(5, 'Pizza Portuguesa', 'pizza-portuguesa.jpg', 55.99)
-];
+let listaProdutos = [];
 
 /**
  * Retorna a lista de Produtos disponíveis para serem adquiridos pelos clientes
- * @returns {Array<Produto>}
+ * @returns {Promise<Array<Produto>>}
  */
-export function getListaProdutos()
+export async function getListaProdutos()
 {
+    listaProdutos = await ProdutosService.getProdutos();
     return listaProdutos;
 }
 

@@ -9,18 +9,21 @@ const seletorProduto = document.querySelector('#seletor_produto');
 const inputQuantidade = document.querySelector('#input_quantidade');
 const btnAdicionarProduto = document.querySelector('#btnAdicionarProduto');
 
-let opcoes_select = '';
-const listaProdutos = ProdutosController.getListaProdutos();
+window.addEventListener('load', async () => {
+    let opcoes_select = '';
+    const listaProdutos = await ProdutosController.getListaProdutos();
 
-listaProdutos.forEach(function (pizza) {
-    opcoes_select += `
-        <option value="${pizza.id}">
-            ${pizza.nome} - ${formataMoeda(pizza.preco)}
-        </option>
-    `;
+    listaProdutos.forEach(function (pizza) {
+        opcoes_select += `
+            <option value="${pizza.id}">
+                ${pizza.nome} - ${formataMoeda(pizza.preco)}
+            </option>
+        `;
+    });
+
+    seletorProduto.innerHTML = opcoes_select;
 });
 
-seletorProduto.innerHTML = opcoes_select;
 
 btnAdicionarProduto.addEventListener('click', function () {
     try 

@@ -7,11 +7,13 @@ window.addEventListener('load', () => {
     exibirContatos();
 });
 
+// Passo X
 export function exibirContatos()
 {
     let tr = '';
 
-    for (let [indice, contato] of Object.entries(ContatosController.getContatos()))
+    const contatos = ContatosController.getContatos();
+    for (let [indice, contato] of Object.entries(contatos))
     {
         tr += `
             <tr>
@@ -29,6 +31,7 @@ export function exibirContatos()
     tabelaContatos.innerHTML = tr;
 }
 
+// Passo X
 tabelaContatos.addEventListener('click', (event) => {
     try
     {
