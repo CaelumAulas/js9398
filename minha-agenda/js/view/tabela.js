@@ -7,7 +7,7 @@ window.addEventListener('load', () => {
     exibirContatos();
 });
 
-// Passo X
+// EXERCÍCIO 1 - PASSOS 9-10
 export function exibirContatos()
 {
     let tr = '';
@@ -31,7 +31,7 @@ export function exibirContatos()
     tabelaContatos.innerHTML = tr;
 }
 
-// Passo X
+// EXERCÍCIO 3 - PASSOS 15-16
 tabelaContatos.addEventListener('click', (event) => {
     try
     {

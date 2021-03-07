@@ -1,0 +1,58 @@
+Faça o download de todos os arquivos presentes no GitHub!
+Usando o terminal do visual studio, execute o arquivo "minha-agenda/api/servidor.mjs" para dar início ao servidor da API
+
+
+
+
+EXERCÍCIO 1: RETORNANDO OS CONTATOS DA API VIA CAMADA SERVICE 
+1) Na pasta "minha-agenda", abra o arquivo "ContatosService"
+2) No método "getContatos" faça uma requisição AJAX (usando a função "fetch") para a URL base da api de contatos 
+3) Converta a resposta retornada em JSON e guarde os dados convertidos numa constante chamada "contatos"
+4) Retorne a constante "contatos" criada no passo anterior (ela conterá o array de contatos salvos no back-end da aplicação)
+5) Abra o arquivo "ContatosController" e importe a classe "ContatosService"
+6) Transforme a função "getContatos" do arquivo "ContatosController" em uma função assíncrona
+7) Dentro dela crie uma constante chamada "listaContatos" que receberá o retorno do método "getContatos" do "ContatosService" (não esqueça de marcar a chamada desse método com await)
+8) Retorne a constante "listaContatos"
+9) Finalmente, abra o arquivo "view/tabela.js" e marque a função "exibirContatos" como uma função assíncrona
+10) Em seguida, marque a execução do método "getContatos" da "ContatosController" com a palavra-chave "await" para que a aplicação espere o retorno dos dados vindos da api antes de tentar exibir as informações na tabela 
+
+TESTE A AGENDA E VEJA SE OS CONTATOS "JHONATAN" E "HENRIQUE" ESTÃO SENDO EXIBIDOS NA TABELA NO CARREGAMENTO DA PÁGINA
+
+
+
+
+EXERCÍCIO 2: SALVANDO OS CONTATOS NA API VIA CAMADA SERVICE
+1) No arquivo "services/ContatosService.js" dentro do método "salvarContato" crie um novo objeto URLSearchParams
+2) Adicione a ele um parâmetro chamado 'contato' cujo valor é a "contatoInfo" transformada numa string JSON 
+3) Crie uma variável chamada 'urlPost' cujo valor é a concatenação da URL_BASE + '?' + o objeto URLSearchParams criado anteriormente 
+4) Realize uma requisição AJAX com o método 'POST' passando a urlPost 
+5) Crie uma constante chamada "status" para receber a resposta do servidor convertida do JSON 
+6) Retorne a constante "status" criada no passo anterior
+7) No arquivo "ContatosController.js" e marque a função "adicionarContato" como assíncrona 
+8) Na linha indicada, dentro da função, crie uma constante chamada "status" que guardará o retorno da chamada do método "salvarContato" do ContatosService (ao chamar esse método passe o "infoContato" como parâmetro e não se esqueça de marcar a execução com a palavra-chave await)
+9) Na linha abaixo exiba no console o valor da constante "status" criada no passo anterior
+
+TESTE A AGENDA E TENTE CRIAR OU ALTERAR UM CONTATO DA AGENDA. SE TUDO DER CERTO, O CONTATO DEVERÁ SER ALTERADO OU ADICIONADO À AGENDA E UM OBJETO COM AS INFORMAÇÕES DA OPERAÇÃO REALIZADA DEVE APARECER NO CONSOLE INDICANDO QUE TUDO FOI REALIZADO COM SUCESSO 
+
+
+
+
+EXERCÍCIO 3: REMOVENDO OS CONTATOS NA API DA AGENDA 
+1) Abra o arquivo "api/servidor.mjs" e crie uma variável chamada "posicao" e guarde nela a propriedade "posicao" do objeto "query" (converta o valor em um valor inteiro antes de atribuir à variável)
+2) Em seguida, SE a variável "posicao" não for um número OU seu valor for menor que zero OU seu valor for maior ou igual à quantidade de itens na constante "listaContatos", guarde na variável "resposta" um objeto com as propriedades status = 0 e mensagem = 'Posição informada é inválida!'
+3) CASO CONTRÁRIO use a posição informada para remover um contato da constante "listaContatos" (que é um Array)
+4) Em seguida, guarde na variável "resposta" um objeto com as propriedades status = 1 e mensagem = 'Contato excluído com sucesso!' 
+5) Abra o arquivo "services/ContatosService.js" e procure o método "removerContato".
+6) Crie um novo objeto URLSearchParams
+7) Adicione a esse objeto um parâmetro chamado 'posicao' com o valor do argumento "posicao" recebido pelo método
+8) Crie uma variável chamada 'urlDelete' cujo valor é a concatenação da URL_BASE + '?' + o objeto URLSearchParams criado
+9) Realize uma requisição AJAX com o método 'DELETE' passando a urlDelete 
+10) Crie uma constante chamada "status" para receber a resposta do servidor convertida do JSON 
+11) Retorne a constante "status" criada no passo anterior
+12) No arquivo "ContatosController.js" procure a função "removerContato" e marque a função como assíncrona
+13) Dentro da função crie uma constante chamada "respostaServidor" que guardará o retorno da chamada do método "removerContato" do "ContatosService" (que deve ser executado com await e deve receber como parâmetro o argumento "indice")
+14) Em seguida, verifique: SE a propriedade "status" do objeto "respostaServidor" for igual a 0 mostre um alerta com o valor da propriedade "mensagem" deste mesmo objeto 
+15) No arquivo "view/tabela.js" marque a arrow function do evento "click" como "async"
+16) Por fim, marque a execução da remoção do contato (ContatosController.removerContato(indice)) com a palavra-chave "await"
+
+TESTE A APLICAÇÃO E VERIFIQUE SE A EXCLUSÃO OCORRE COMO ESPERADO

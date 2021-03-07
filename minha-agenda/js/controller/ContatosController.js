@@ -4,6 +4,7 @@ import { exibirContatos } from "../view/tabela.js";
 
 /** @type {Array<Contato>} */
 
+// EXERCICIO 2 - PASSOS 7-8-9
 export function adicionarContato(nome, telefone)
 {
     if (!nome) {
@@ -14,16 +15,18 @@ export function adicionarContato(nome, telefone)
     }
 
     const infoContato = new Contato(nome, telefone);
-    // Passo X
+    
     exibirContatos();
 }
 
+// EXERCÍCIO 1 - PASSO 12-13-14
 export function removerContato(indice)
 {
-    // Passo X
+    
 }
 
+// EXERCÍCIO 1 - PASSO 6-7-8
 export function getContatos()
 {
-    // Passo X
+    
 }

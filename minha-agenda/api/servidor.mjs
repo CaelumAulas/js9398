@@ -21,13 +21,13 @@ const app = http.createServer((request, response) => {
     // DELETE, PUT, HEAD e o escambal (pre-flight)
     if (metodo === 'OPTIONS') {
         response.writeHead(200, responseConfig);
-        response.end();
     }
 
     if (urls_validas.includes(urlAcessada))
     {
         response.writeHead(200, responseConfig);
         let listaContatosJson = fs.readFileSync('./db/contatos.json', 'utf-8');
+        /** @type {Array} */
         const listaContatos = JSON.parse(listaContatosJson);
         let resposta = {};
 
@@ -41,11 +41,12 @@ const app = http.createServer((request, response) => {
         /* Salva um contato */
         else if (metodo === 'POST' && query.contato)
         {
-            // api/contatos?contato=[OBJETO JSON]
+            /* api/contatos?contato=[OBJETO JSON] */
             let jsonContato = query.contato;
             const contato = JSON.parse(jsonContato);
 
             let posicaoContato = listaContatos.findIndex(c => c.nome.toUpperCase() === contato.nome.toUpperCase());
+
             if (posicaoContato >= 0) {
                 listaContatos[posicaoContato] = contato;
             }
@@ -59,7 +60,10 @@ const app = http.createServer((request, response) => {
         /* Exclui um contato */
         else if (metodo === 'DELETE' && query.posicao)
         {
-            // api/contatos?posicao=[INDICE DO ITEM NO ARRAY]
+            /* 
+                api/contatos?posicao=[INDICE DO ITEM NO ARRAY]
+                EXERCÍCIO 3
+            */
         }
 
         listaContatosJson = JSON.stringify(listaContatos);

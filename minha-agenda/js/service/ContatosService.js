@@ -2,18 +2,18 @@ const URL_BASE = 'http://localhost:8008/api/contatos';
 
 export default class ContatosService
 {
-    static async salvarContato(contato)
+    static async salvarContato(contatoInfo)
     {
-        // Passo X
+        // EXERCÍCIO 2
     }
 
     static async getContatos()
     {
-        // Passo X
+        // EXERCÍCIO 1
     }
 
     static async removerContato(posicao)
     {
-        // Passo X
+        // EXERCÍCIO 3
     }
 }
